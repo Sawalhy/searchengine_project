@@ -7,25 +7,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <div class="main">
-    <img src="https://i.ibb.co/7XV6FQK/logo.png" class="main-logo" alt="logo1" width="500px" height="180px">
-    <div class="search-box">
-        <input type="text" name="mainBox" placeholder="Search Not Google...">
-        <div class="btn">
-            <a href="#" class="search-icon"><i class="fa fa-microphone" style="font-size:24px"></i></a>
-        </div>
-    </div>
-    <div class="search-items">
-        <a href="#">
-            <div class="search-btn">
-                Search
+
+    <form action="search" method="GET" id="searchRequest">
+        <img src="https://i.ibb.co/7XV6FQK/logo.png" class="main-logo" alt="logo1" width="500px" height="180px">
+            <div class="search-box">
+                <input type="text" name="mainBox" placeholder="Search Not Google...">
+                <div class="btn" >
+                    <a href="#" class="search-icon"><i class="fa fa-microphone" style="font-size:24px"></i></a>
+                </div>
             </div>
-        </a>
-        <a href="#">
-            <div class="search-btn2">
-                Images Search
+            <div class="search-items">
+                <a href="#">
+                    <input type="submit" class="search-btn" value="Search">
+                    </input>
+                </a>
+                <a href="#">
+                    <input type="submit" class="search-btn2" value="Image Search">
+                    </input>
+                </a>
             </div>
-        </a>
-    </div>
+    </form>
 
 </div>
 

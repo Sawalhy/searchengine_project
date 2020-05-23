@@ -4,19 +4,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-public class NameGender extends HttpServlet {
+public class searchServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        String name = request.getParameter("Name");
-        String gender = request.getParameter("Gender");
+        String text = request.getParameter("mainBox");
 
-        queryProcessor qp = new queryProcessor(name);
-
-        String test = qp.springCleaning();
+        queryProcessor qp = new queryProcessor(text);
 
 
-        String message = test;
+        String message = text;
 
         response.setContentType("text/html");
 
