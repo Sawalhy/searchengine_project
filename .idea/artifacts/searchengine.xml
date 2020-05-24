@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="searchengine">
+    <output-path>$PROJECT_DIR$/../xampp/tomcat/webapps/ROOT/WEB-INF/classes/artifacts/searchengine</output-path>
+    <root id="archive" name="searchengine.war">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="searchengine" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="X:/Libraries/apache-opennlp-1.9.2/lib/opennlp-tools-1.9.2.jar" />
+        </element>
+        <element id="file-copy" path="$PROJECT_DIR$/web.xml" />
+      </element>
+      <element id="dir-copy" path="$PROJECT_DIR$/interface" />
+      <element id="javaee-facet-resources" facet="searchengine/web/Web" />
+    </root>
+  </artifact>
+</component>

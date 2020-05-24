@@ -6,18 +6,28 @@ import java.io.IOException;
 
 public class searchServlet extends HttpServlet {
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
+    String body;
+    
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String text = request.getParameter("mainBox");
 
-        queryProcessor qp = new queryProcessor(text);
+        textProcessor tp = new textProcessor();
 
 
-        String message = text;
+        //ADD SQL INJECTION PROTECTOR
+        if (text.charAt(0) == '"' && text.charAt(text.length()-1) == '"')
+        {
+            body = "ama nshoof han3mel elzeft dh ezai";
+        }
+        else
+        {
+            body = tp.stemming(text);
+            body = tp.removeStopwords(body);
+        }
 
         response.setContentType("text/html");
 
-        String page = "<!doctype html> <html> <body> <h1>" + message +" </h1> </body></html>";
+        String page = "<!doctype html> <html> <body> <h1>" + body +" </h1> </body></html>";
         response.getWriter().println(page);
     }
 

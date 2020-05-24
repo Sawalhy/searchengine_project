@@ -10,17 +10,13 @@ import java.util.stream.Stream;
 
 import static opennlp.tools.stemmer.snowball.SnowballStemmer.ALGORITHM.ENGLISH;
 
-public class textProcessing {
+public class textProcessor {
 
-    String text;
-
-
-
-    public String removeStopwords(String query) throws IOException {
+    public String removeStopwords(String text) throws IOException {
         List<String> stopwords = Files.readAllLines(Paths.get("stopwords.txt"));
 
         ArrayList<String> allWords =
-                Stream.of(query.toLowerCase().split(" "))
+                Stream.of(text.toLowerCase().split(" "))
                         .collect(Collectors.toCollection(ArrayList<String>::new));
         allWords.removeAll(stopwords);
 
@@ -31,18 +27,21 @@ public class textProcessing {
 
     }
 
-    public String springCleaning() throws IOException {
+    public String stemming(String text) throws IOException {
         SnowballStemmer stemmer = new SnowballStemmer(ENGLISH);
 
-        text = (String) stemmer.stem(text);
+        ArrayList<String> allWords = Stream.of(text.split(" ")).collect(Collectors.toCollection(ArrayList<String>::new));
 
-        text = removeStopwords(text);
+        for (int i = 0; i < allWords.size() ; i++) {
+            allWords.set(i, (String) stemmer.stem(allWords.get(i)));
+        }
 
+        String result = allWords.stream().collect(Collectors.joining(" "));
 
-        return text;
+        return result;
     }
 
-
+//might need to reimplement without merging
 
 
 
