@@ -2,17 +2,18 @@
 <html>
 
 <head>
-    <title>Not Google</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Trending in your country</title>
+    <link rel="stylesheet" href="trends.css">
 </head>
-<div class="main">
-    <img src="https://i.ibb.co/7XV6FQK/logo.png" class="main-logo" alt="logo1" width="500px" height="180px">
 
-    <form action="search" method="GET" id="searchRequest">
-        <h3 id="countryHeader">If you want your search to be specific to a certain country, please choose it from this list</h3>
+<body>
+    <img src="https://i.ibb.co/7XV6FQK/logo.png" class="main-logo" alt="logo1" width="200px" height="70px">
+    <form action="search" method="GET" id="trendSearchRequest">
+        <a href="#">
+            <input type="submit" class="search-btn2" value="Search" id="websiteSearchButton">
+            </input>
+        </a>
         <select id="country" name="country">
-            <option value="none"></option>
             <option value="Afganistan">Afghanistan</option>
             <option value="Albania">Albania</option>
             <option value="Algeria">Algeria</option>
@@ -260,28 +261,74 @@
             <option value="Zambia">Zambia</option>
             <option value="Zimbabwe">Zimbabwe</option>
          </select>
-        <div class="search-box">
-            <input type="text" name="mainBox" placeholder="Search Not Google...">
-            <div class="btn">
-                <a href="#" class="search-icon"><i class="fa fa-microphone" style="font-size:24px"></i></a>
-            </div>
-        </div>
-        <div class="search-items">
-            <a href="#">
-                <input type="submit" class="search-btn2" value="Search" id="websiteSearchButton">
-                </input>
-            </a>
-            <a href="#">
-                <input type="submit" class="search-btn2" value="Image Search" id="imageSearchButton">
-                </input>
-            </a>
-        </div>
     </form>
+    <h1 class="topTrends">Top trends in your country: </h1>
+    <div class="searchResults">
+        <div class="Result">
+            <a href="#">
+                <h3 class="resultTitle">Website title</h3>
+                <div class="resultLink">http://www.google.com</div>
+                <p class="resultSnippet">Lorem wqewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwIpsaddasdsadadasdsasum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p class="resultSnippet">
+            </a>
+        </div>
+        <div class="Result">
+            <a href="#">
+                <h3 class="resultTitle">Website title</h3>
+                <div class="resultLink">http://www.google.com</div>
+                <p class="resultSnippet">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p class="resultSnippet">
+            </a>
+        </div>
+        <div class="Result">
+            <a href="#">
+                <h3 class="resultTitle">Website title</h3>
+                <div class="resultLink">http://www.google.com</div>
+                <p class="resultSnippet">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p class="resultSnippet">
+            </a>
+        </div>
+        <div class="Result">
+            <a href="#">
+                <h3 class="resultTitle">Website title</h3>
+                <div class="resultLink">http://www.google.com</div>
+                <p class="resultSnippet">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p class="resultSnippet">
+            </a>
+        </div>
+        <div class="Result">
+            <a href="#">
+                <h3 class="resultTitle">Website title</h3>
+                <div class="resultLink">http://www.google.com</div>
+                <p class="resultSnippet">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p class="resultSnippet">
+            </a>
+        </div>
+        <div class="Result">
+            <a href="#">
+                <h3 class="resultTitle">Website title</h3>
+                <div class="resultLink">http://www.google.com</div>
+                <p class="resultSnippet">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p class="resultSnippet">
+            </a>
+        </div>
+        <div class="Result">
+            <a href="#">
+                <h3 class="resultTitle">Website title</h3>
+                <div class="resultLink">http://www.google.com</div>
+                <p class="resultSnippet">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p class="resultSnippet">
+            </a>
+        </div>
+        <div class="Result">
+            <a href="#">
+                <h3 class="resultTitle">Website title</h3>
+                <div class="resultLink">http://www.google.com</div>
+                <p class="resultSnippet">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p class="resultSnippet">
+            </a>
+        </div>
+        <div class="Result">
+            <a href="#">
+                <h3 class="resultTitle">Website title</h3>
+                <div class="resultLink">http://www.google.com</div>
+                <p class="resultSnippet">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p class="resultSnippet">
+            </a>
+        </div>
 
-</div>
-
-<body>
-
+    </div>
 </body>
 
 </html>
