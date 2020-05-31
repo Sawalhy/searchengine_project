@@ -2,6 +2,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 
 public class searchServlet extends HttpServlet {
@@ -26,8 +27,19 @@ public class searchServlet extends HttpServlet {
             query = tp.removeStopwords(query);
         }
 
-        response.setContentType("text/html");
+        search srch = new search();
 
+        try {
+            result = srch.searchExcute(query);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+/////////////////////////////////////
+        response.setContentType("text/html");
         String page = "<!doctype html> <html> <body> <h1>" + result +" </h1> </body></html>";
         response.getWriter().println(page);
     }

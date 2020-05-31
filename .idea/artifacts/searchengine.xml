@@ -8,6 +8,7 @@
         </element>
         <element id="directory" name="lib">
           <element id="file-copy" path="X:/Libraries/apache-opennlp-1.9.2/lib/opennlp-tools-1.9.2.jar" />
+          <element id="library" level="project" name="mysql-connector-java-8.0.20" />
         </element>
         <element id="file-copy" path="$PROJECT_DIR$/web.xml" />
       </element>
