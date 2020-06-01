@@ -24,7 +24,7 @@ public class search {
     }
 
     public ArrayList<String> ranker() throws SQLException {
-        String sqlQuery = "SELECT URL,(q2.TermFreq * q1.IDF) AS TFIDF,q2.HFreq,q2.InTitle FROM (SELECT * FROM `wordsindex` WHERE Word = \"" + searchWord + "\") q1 JOIN (SELECT * FROM wordsurlsindex WHERE TermFreq > 0) q2 ON q1.Word = q2.Word ORDER BY TFIDF DESC;";
+        String sqlQuery = "SELECT URL,(q2.TermFreq * q1.IDF) AS TFIDF,q2.HFreq,q2.InTitle FROM (SELECT * FROM `wordsindex` WHERE Word =  \"sun\" ) q1 JOIN (SELECT * FROM wordsurlsindex WHERE TermFreq > 0) q2 ON q1.Word = q2.Word ORDER BY TFIDF DESC;";
         PreparedStatement statement = con.prepareStatement(sqlQuery);
         ResultSet set = statement.executeQuery();
 
