@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="opennlp-tools-1.9.2">
+    <CLASSES>
+      <root url="jar://X:/Libraries/apache-opennlp-1.9.2/lib/opennlp-tools-1.9.2.jar!/" />
+      <root url="jar://X:/Libraries/apache-opennlp-1.9.2/lib/opennlp-uima-1.9.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

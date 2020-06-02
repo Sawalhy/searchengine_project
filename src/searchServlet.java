@@ -1,22 +1,38 @@
+import opennlp.tools.namefind.NameFinderME;
+import opennlp.tools.namefind.TokenNameFinderModel;
+import opennlp.tools.util.Span;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 public class searchServlet extends HttpServlet {
-
     String query;
     ArrayList<String> result;
     
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
         String text = request.getParameter("mainBox");
+        String textORimage = request.getParameter("button");
         textProcessor tp = new textProcessor();
 
+        InputStream inputStreamNameFinder = new FileInputStream(".../en-nerperson.bin");
+        TokenNameFinderModel model = new TokenNameFinderModel(inputStreamNameFinder);
+        NameFinderME nameFinder = new NameFinderME(model);
+        Span nameSpans[] = nameFinder.find(new String[]{text});
 
+//        for (Span span : spans)
+
+
+
+        text = text + " ";//ensure that text won't be empty
         if (text.charAt(0) == '"' && text.charAt(text.length()-1) == '"')
         {
             query = "ama nshoof han3mel elzeft dh ezai";
@@ -26,25 +42,36 @@ public class searchServlet extends HttpServlet {
             query = tp.stemming(text);
             query = tp.removeStopwords(query);
         }
+        ArrayList<String> searchWords = Stream.of(query.split(" ")).collect(Collectors.toCollection(ArrayList<String>::new));
 
-        search srch = new search(query);
+        String page = null;
 
-        try {
-            result = srch.searchExcute();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if (textORimage.equals("Search"))
+        {
+            textSearch srch = new textSearch(searchWords);
+            try {
+                page = srch.searchExcute();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        else if(textORimage.equals("ImageSearch"))
+        {
+            imageSearch srch = new imageSearch(searchWords);
+            try {
+                page = srch.searchExcute();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
-
-/////////////////////////////////////
+///////////////////////////////////// INTERFACE
         response.setContentType("text/html");
-        String page = "<!doctype html> <html> <body> <h1>";
-        for (int i = 0; i < result.size() ; i++) {
-            page = page + result.get(i) + "<br>";
-        }
-        page = page +  " </h1> </body></html>" ;
+
         response.getWriter().println(page);
     }
 

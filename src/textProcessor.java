@@ -43,8 +43,4 @@ public class textProcessor {
 
 //might need to reimplement without merging
 
-
-
-
-
 }
