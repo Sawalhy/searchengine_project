@@ -1,13 +1,7 @@
-import opennlp.tools.namefind.NameFinderME;
-import opennlp.tools.namefind.TokenNameFinderModel;
-import opennlp.tools.util.Span;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -23,10 +17,10 @@ public class searchServlet extends HttpServlet {
         String textORimage = request.getParameter("button");
         textProcessor tp = new textProcessor();
 
-        InputStream inputStreamNameFinder = new FileInputStream(".../en-nerperson.bin");
-        TokenNameFinderModel model = new TokenNameFinderModel(inputStreamNameFinder);
-        NameFinderME nameFinder = new NameFinderME(model);
-        Span nameSpans[] = nameFinder.find(new String[]{text});
+//        InputStream inputStreamNameFinder = new FileInputStream(".../en-nerperson.bin");
+//        TokenNameFinderModel model = new TokenNameFinderModel(inputStreamNameFinder);
+//        NameFinderME nameFinder = new NameFinderME(model);
+//        Span nameSpans[] = nameFinder.find(new String[]{text});
 
 //        for (Span span : spans)
 
