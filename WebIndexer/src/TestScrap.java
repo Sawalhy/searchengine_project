@@ -128,7 +128,7 @@ public class TestScrap {
             String date=null;
             String dateGet = doc.select("time").attr("datetime");
             if(!dateGet.isEmpty()&&dateGet.length()>=10)
-            date=dateGet.substring(0,10);
+                date=dateGet.substring(0,10);
             ///////////////////////////////////////////////////////////////////////
 
             //////////// --------- For images searching ------ ///////////////
@@ -143,7 +143,10 @@ public class TestScrap {
                     imgObj.URL = url;
                     picsMap.put(url, imgObj);
                 }
-                String[] description = img.attr("alt").split("[^A-ZÃƒâ€¦Ãƒâ€žÃƒâ€“a-zÃƒÂ¥ÃƒÂ¤ÃƒÂ¶]+");
+                String imgtext=img.attr("alt");
+                imgtext=cleaner.removeStopwords(imgtext);
+                imgtext=cleaner.stemming(imgtext);
+                String[] description = imgtext.split("[^A-ZÃƒâ€¦Ãƒâ€žÃƒâ€“a-zÃƒÂ¥ÃƒÂ¤ÃƒÂ¶]+");
                 imgObj.keyWords = description;
             }
             //////////////////////////////////////////////////////////////////////////////////////
