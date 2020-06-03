@@ -65,15 +65,7 @@ public class imageSearch {
                 "\n" +
                 "<body>\n" +
                 "    <img src=\"https://i.ibb.co/7XV6FQK/logo.png\" class=\"main-logo\" alt=\"logo1\" width=\"200px\" height=\"70px\">\n" +
-                "    <form action=\"search\" method=\"GET\" id=\"searchRequest\">\n" +
-                "        <div class=\"search-box\">\n" +
-                "            <input type=\"text\" id=\"search-box1\" name=\"mainBox\" placeholder=\"Search Not Google...\">\n" +
-                "            <a href=\"#\">\n" +
-                "                <input type=\"submit\" class=\"search-btn2\" value=\"Search Images\" id=\"imageSearchButton\">\n" +
-                "                </input>\n" +
-                "            </a>\n" +
-                "        </div>\n" +
-                "    </form>\n" +
+
                 "    <div class=\"imageResults\">";
 
 
@@ -88,6 +80,8 @@ public class imageSearch {
                 "</body>\n" +
                 "\n" +
                 "</html>" ;
+
+        con.close();
 
         return page;
 

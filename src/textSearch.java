@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -10,7 +11,7 @@ public class textSearch {
         searchWords = input;
     }
 
-    public String searchExcute() throws SQLException, ClassNotFoundException {
+    public String searchExcute() throws SQLException, ClassNotFoundException, IOException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         String url = "jdbc:mysql://localhost:3306/searchindex?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         String user = "root";
@@ -23,7 +24,7 @@ public class textSearch {
         return null;
     }
 
-    public String ranker() throws SQLException {
+    public String ranker() throws SQLException, IOException {
 
 
         String sqlQuery = "SELECT URL,(q2.TermFreq * q1.IDF) AS TFIDF,q2.HFreq,q2.InTitle FROM (SELECT * FROM `wordsindex` WHERE Word = ";
@@ -55,6 +56,8 @@ public class textSearch {
             result.add("<h1>No results found</h1>");
         }
 
+        interfaceHelper iHelp = new interfaceHelper();
+
         String page = "<!DOCTYPE html>\n" +
                 "<html>\n" +
                 "\n" +
@@ -68,10 +71,10 @@ public class textSearch {
                 "    <div class=\"searchResults\">\n";
         for (int j = 0; j < result.size() ; j++) {
             page = page + "<div class=\"Result\">\n" +
-                    "            <a href=\"#\">\n" +
-                    "                <h3 class=\"resultTitle\">Website title</h3>\n" +
+                    "            <a href=\""+ result.get(j) +" \">\n" +
+                    "                <h3 class=\"resultTitle\"> Title </h3>\n" +  //+ iHelp.GetTitle(result.get(j) ) +
                     "                <div class=\"resultLink\">" +  result.get(j) + "</div>\n" +
-                    "                <p class=\"resultSnippet\">SNIPPET.</p class=\"resultSnippet\">\n" +
+                    "                <p class=\"resultSnippet\"> Snippet .</p class=\"resultSnippet\">\n" + //+ iHelp.getParagraph(result.get(j),searchWords.get(0)) +
                     "            </a>\n" +
                     "        </div>";
         }
@@ -79,6 +82,8 @@ public class textSearch {
                 "</body>\n" +
                 "\n" +
                 "</html>" ;
+
+        con.close();
 
         return page;
 
