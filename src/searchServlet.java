@@ -50,7 +50,7 @@ public class searchServlet extends HttpServlet {
         /////////////////////////////////////////////////////////////////////////////////
 
         try {
-            tp.trendDetect(text);
+            tp.trendDetect(text,country);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -80,7 +80,7 @@ public class searchServlet extends HttpServlet {
 
         if (textORimage.equals("Search"))
         {
-            textSearch srch = new textSearch(searchWords);
+            textSearch srch = new textSearch(searchWords,country);
             try {
                 page = srch.searchExcute();
             } catch (ClassNotFoundException e) {

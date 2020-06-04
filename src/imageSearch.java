@@ -28,7 +28,7 @@ public class imageSearch {
     public String ranker() throws SQLException {
 
 
-        String sqlQuery = "SELECT imagesindex.ImgURL,IDF FROM (`imagesindex` JOIN wordsindex ON RelatedWord = wordsindex.Word) WHERE RelatedWord = ";
+        String sqlQuery = "SELECT DISTINCT  imagesindex.ImgURL FROM (`imagesindex` JOIN wordsindex ON RelatedWord = wordsindex.Word) WHERE RelatedWord = ";
 
         for (int i = 0; i < searchWords.size() ; i++) {
             sqlQuery = sqlQuery + '"' + searchWords.get(i) + '"';

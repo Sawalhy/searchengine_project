@@ -6,9 +6,11 @@ public class textSearch {
 
     Connection con;
     ArrayList<String> searchWords;
+    String country;
 
-    public textSearch(ArrayList<String> input) {
+    public textSearch(ArrayList<String> input,String countri) {
         searchWords = input;
+        country = countri;
     }
 
     public String searchExcute() throws SQLException, ClassNotFoundException, IOException {
@@ -27,7 +29,7 @@ public class textSearch {
     public String ranker() throws SQLException, IOException {
 
 
-        String sqlQuery = "SELECT URL,(q2.TermFreq * q1.IDF) AS TFIDF,q2.HFreq,q2.InTitle FROM (SELECT * FROM `wordsindex` WHERE Word = ";
+        String sqlQuery = "SELECT SUM(TFIDF * IF(STRCMP(loc,\"" + country +"\"), 0.01, 1) * DATEDIFF(Date,CURRENT_DATE()) ) AS Score,URL,Date FROM (SELECT URL,(q2.TermFreq * q1.IDF) AS TFIDF,q2.HFreq,q2.InTitle,q2.Location AS loc,q2.Date FROM (SELECT * FROM `wordsindex` WHERE Word = ";
 
         for (int i = 0; i < searchWords.size() ; i++) {
            sqlQuery = sqlQuery + '"' + searchWords.get(i) + '"';
@@ -37,7 +39,7 @@ public class textSearch {
            }
         }
 
-        sqlQuery = sqlQuery + ") q1 JOIN (SELECT * FROM wordsurlsindex WHERE TermFreq > 0) q2 ON q1.Word = q2.Word ORDER BY TFIDF DESC;";
+        sqlQuery = sqlQuery + ") q1 JOIN (SELECT * FROM wordsurlsindex WHERE TermFreq > 0) q2 ON q1.Word = q2.Word) main GROUP BY URL ORDER BY `Score` DESC;";
 
 
         PreparedStatement statement = con.prepareStatement(sqlQuery);

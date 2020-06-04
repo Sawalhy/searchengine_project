@@ -80,7 +80,7 @@ public class textProcessor {
 
     }
 
-    public void trendDetect(String text) throws IOException, SQLException {
+    public void trendDetect(String text,String country) throws IOException, SQLException {
         /////////////////////////////////////////////////////////////////////////////////    Trend detection
 
         String[] tokens = text.split(" ");
@@ -97,7 +97,7 @@ public class textProcessor {
         Statement stat = con.createStatement();
         for(Span s: nameSpans)
         {
-            String sqlQuery = "INSERT INTO `personsearchhistory` (`searchCountry`, `personName`) VALUES ('Egypt', '" + (tokens[s.getStart()]).toLowerCase() + " " + (tokens[s.length()-1]).toLowerCase() +    "');";
+            String sqlQuery = "INSERT INTO `personsearchhistory` (`searchCountry`, `personName`) VALUES ('" + country +"', '" + (tokens[s.getStart()]).toLowerCase() + " " + (tokens[s.length()-1]).toLowerCase() +    "');";
             stat.executeUpdate(sqlQuery);
         }
 
