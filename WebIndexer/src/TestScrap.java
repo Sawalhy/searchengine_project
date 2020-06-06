@@ -78,7 +78,12 @@ public class TestScrap {
             catch (HttpStatusException e){
                 continue;
             }
-
+            catch (IOException e){
+                continue;
+            }
+          /*  catch (IOException e){
+                continue;
+            }*/
             ///////////////////////////////////////////////////////////////
             /// an algorithm to check for the location of websites from their extensions //////
             boolean hasLocation=false;
